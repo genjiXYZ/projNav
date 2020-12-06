@@ -5,8 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    savedPosition:""
   },
   mutations: {
+    savePosition(state,payload){
+      state.savedPosition  = payload
+    }
+
   },
   actions: {
   },

@@ -1,18 +1,56 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <v-main>
+
+      <nav class="nav"></nav>
+      <Banner />
+      <SmallBanner />
+      <MainBox />
+      <HelloWorld />
+    </v-main>
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Banner from "../components/Banner";
+import SmallBanner from "../components/SmallBanner";
+import MainBox from "../components/MainBox";
 
+import HelloWorld from "../components/HelloWorld";
 export default {
-  name: 'Home',
+  data() {
+    return {
+      num: 123,
+    };
+  },
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    Banner,
+    SmallBanner,
+    MainBox,
+    HelloWorld,
+  },
+
+  //  beforeRouteEnter:(to,from,next)=>{
+  // console.log("🚀 ~ file: App.vue ~ line 82 ~ to", to)
+
+  //           next(vm=>{
+  //               alert(vm.num)
+  //           })
+  //       },
+
+  mounted() {
+    this.$nextTick(function () {
+      let position = this.$store.state.savedPosition ; //返回页面取出来
+      console.log('position: ', position);
+      console.log("up");
+      window.scrollTo({
+        top: position,
+        behavior: "smooth",
+      });
+    });
+  },
+};
 </script>
